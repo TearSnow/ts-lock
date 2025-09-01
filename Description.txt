@@ -1,0 +1,5 @@
+TS Lock的作用就是一键清除 core_updater.lock 锁，解决“另一更新正在进行”的问题，并在任务完成后自动停用自身。
+
+WordPress 升级更新时，系统会在数据库的 _options 表中写入一个名为 core_updater.lock 的临时选项。这是一个锁机制（Lock），用于防止多个更新任务同时进行，避免数据冲突或破坏。
+
+锁值是一个时间戳；WordPress 会在执行更新期间检查这个锁是否存在；如果发现锁未过期，就会阻止再次更新，并提示：另一更新正在进行。（Another update is currently in progress.）
